@@ -6,11 +6,10 @@ lws==1.2.6
 Markdown==3.1.1
 matplotlib==3.1.1
 multiprocess
-numba
-numpy==1.16.4
+numba==0.48
 opencv-python==4.1.1.26
 pesq==0.0.1
-PyQt5
+PyQt5==5.14
 pystoi==0.2.2
 scikit-learn==0.21.2
 scikit-image
