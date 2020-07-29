@@ -58,6 +58,7 @@ def process_video_file(vfile, args, gpu_id):
 	#print (fulldir)
 
 	wavpath = path.join(fulldir, 'audio.wav')
+	print(wavpath)
 	specpath = path.join(fulldir, 'mels.npz')
 
 	command = template2.format(vfile, wavpath)
@@ -86,6 +87,7 @@ def process_audio_file(vfile, args, gpu_id):
 	os.makedirs(fulldir, exist_ok=True)
 
 	wavpath = path.join(fulldir, 'audio.wav')
+	print(wavpath)
 	specpath = path.join(fulldir, 'mels.npz')
 
 	wav = audio.load_wav(wavpath, hp.sample_rate)

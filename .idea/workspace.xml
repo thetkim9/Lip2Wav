@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e989248d-6d8c-4568-9036-a53819bbaaeb" name="Default Changelist" comment="" />
+    <list default="true" id="e989248d-6d8c-4568-9036-a53819bbaaeb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,5 +34,11 @@
       <updated>1595818224369</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1488" y="180" width="586" height="490" key="find.popup" timestamp="1596012032746">
+      <screen x="1440" y="23" width="1920" height="1057" />
+    </state>
+    <state x="1488" y="180" width="586" height="490" key="find.popup/0.23.1440.798/1440.23.1920.1057@1440.23.1920.1057" timestamp="1596012032746" />
   </component>
 </project>
