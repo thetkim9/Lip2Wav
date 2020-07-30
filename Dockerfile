@@ -27,6 +27,9 @@ RUN apt -y install git-all
 RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1CeF7CbamFZc--kOoIZd-9ZMB6JQDyxDf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1CeF7CbamFZc--kOoIZd-9ZMB6JQDyxDf" -O tacotron_model.ckpt-313000.data-00000-of-00001 && rm -rf /tmp/cookies.txt
 RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1DD9JpiqyafaoBgIWoQFOx5uWSn6ZgvB2' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1DD9JpiqyafaoBgIWoQFOx5uWSn6ZgvB2" -O tacotron_model.ckpt-313000.index && rm -rf /tmp/cookies.txt
 RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1sN2nm8gXfNbO4NgNmmRZl3JDtdYGPUEP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1sN2nm8gXfNbO4NgNmmRZl3JDtdYGPUEP" -O tacotron_model.ckpt-313000.meta && rm -rf /tmp/cookies.txt
+RUN python3.7 -m pip install flask
+RUN python3.7 -m pip install "Pillow<7"
+RUN python3.7 -m pip install requests
 COPY . .
 EXPOSE 80
 #CMD python3 server.py
