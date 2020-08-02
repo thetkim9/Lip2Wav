@@ -78,9 +78,11 @@ def lip2wav():
     print("hi1", user_id)
     lip_video = VideoFileClip(request.files['lip_video'].stream)
 
+    '''
     if(lip_video.format!='mp4'):
       return {'error': 'video must be mp4'}, 401
-
+    '''
+    
     print("hi2", user_id)
     path = os.path.join("inputs", str(user_id))
     os.mkdir(path)
