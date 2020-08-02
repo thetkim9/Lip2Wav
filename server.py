@@ -76,13 +76,28 @@ def lip2wav():
     global progressRates
     user_id = int(request.form.get('user_id'))
     print("hi1", user_id)
-    lip_video = VideoFileClip(request.files['lip_video'].stream)
+    cap = cv2.VideoCapture(request.files['lip_video'].stream)
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    out = cv2.VideoWriter('input.mp4', fourcc, 20.0, (640, 480))
+
+    while (cap.isOpened()):
+        ret, frame = cap.read()
+        if ret == True:
+            frame = cv2.flip(frame, 0)
+            out.write(frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        else:
+            break
+    cap.release()
+    out.release()
+    cv2.destroyAllWindows()
 
     '''
     if(lip_video.format!='mp4'):
       return {'error': 'video must be mp4'}, 401
     '''
-    
+
     print("hi2", user_id)
     path = os.path.join("inputs", str(user_id))
     os.mkdir(path)
