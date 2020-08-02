@@ -163,6 +163,7 @@ def health():
   return "healthy", 200
 
 if __name__ == '__main__':
+    '''
     import argparse
     import demo.demo as demo
     parser = argparse.ArgumentParser(description='Demo configurations.')
@@ -179,5 +180,5 @@ if __name__ == '__main__':
     parser.add_argument('--render_video', default=True, action='store_true', help='Render 3D animations to video')
     args = parser.parse_args()
     model = demo.Demo(args)
-
+    '''
     app.run(debug=False, port=80, host='0.0.0.0', threaded=True)
