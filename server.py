@@ -67,6 +67,8 @@ def lip2wav():
   if len(threads)>5:
       return {'error': 'too many requests'}, 429
 
+  print(request.files)
+
   if not request.files.get('lip_video'):
     return {'error': 'video not found'}, 400
 
