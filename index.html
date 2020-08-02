@@ -49,8 +49,8 @@
                 <p>Number of pending requests ahead: <span id="pending">0</span></p>
                 <div id ='resultBox' style="margin-left: auto; margin-right: auto;">
                     <p id='errorbox'></p>
-                    <img id="preload" src="{{ url_for('static', filename='sampleIn.mp4') }}">
-                    <img id="result" src="{{ url_for('static', filename='sampleOut.wav') }}">
+                    <video id="preload" src="{{ url_for('static', filename='sampleIn.mp4') }}">
+                    <audio id="result" src="{{ url_for('static', filename='sampleOut.wav') }}">
                 </div>
                 <script src="{{ url_for('static', filename='jquery-3.5.1.js') }}"></script>
                 <script src="{{ url_for('static', filename='request.js') }}"></script>
