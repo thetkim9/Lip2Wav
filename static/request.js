@@ -61,7 +61,7 @@ document.getElementById("submit").onclick = () => {
     //var user_id = uuidv4();
     user_id = Math.floor(Math.random()*1000000000);
     var progress_bar = document.getElementById('progress_bar');
-    formData.append('person_image', source);
+    formData.append('lip_video', source);
     formData.append('user_id', user_id);
     $.get('setup/' + user_id);
     check_progress(user_id, progress_bar);
