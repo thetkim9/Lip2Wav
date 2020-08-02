@@ -1,19 +1,13 @@
 from flask import Flask, render_template, request, send_file, make_response
 #from flask_limiter import Limiter
 from PIL import Image, ImageOps
-#from subprocess import Popen, PIPE
-#import shlex
-from moviepy.editor import *
-#import threading
 import time
 import shutil
 import os
 import sys
-#import io
-from demo.utils import *
-
-#import trace
 import threading
+from moviepy.editor import *
+import cv2
 
 progressRates = {}
 threads = []
@@ -64,8 +58,8 @@ app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 8
 def index():
     return render_template('index.html')
 
-@app.route('/render3D/<int:user_id>', methods=['GET', 'POST'])
-def render3D(user_id):
+@app.route('/lip2wav', methods=['GET', 'POST'])
+def lip2wav():
   if request.method != "POST":
     return
 
@@ -73,24 +67,24 @@ def render3D(user_id):
   if len(threads)>5:
       return {'error': 'too many requests'}, 429
 
-  print("hi0", user_id)
-  if not request.files.get('person_image'):
-    return {'error': 'must have a image of human face'}, 400
+  if not request.files.get('lip_video'):
+    return {'error': 'video not found'}, 400
 
   try:
     global progressRates
-    #user_id = int(request.form.get('user_id'))
+    user_id = int(request.form.get('user_id'))
     print("hi1", user_id)
-    human_face = Image.open(request.files['person_image'].stream)
-    if(human_face.format not in ['JPG', 'JPEG', 'PNG']):
-      return {'error': 'image must be jpg, jpeg or png'}, 401
+    lip_video = VideoFileClip(request.files['lip_video'].stream)
+
+    if(lip_video.format!='mp4'):
+      return {'error': 'video must be mp4'}, 401
 
     print("hi2", user_id)
-    path = os.path.join("demo/inputs", str(user_id))
+    path = os.path.join("inputs", str(user_id))
     os.mkdir(path)
     print("hi3", user_id)
-    dir1 = "demo/inputs/"+str(user_id)+"/"+str(user_id)+"."+human_face.format.lower()
-    human_face.save(dir1)
+    dir1 = "inputs/"+str(user_id)+"/"+str(user_id)+".mp4"
+    lip_video.save(dir1)
     progressRates[user_id] = 10
     print("hi4", user_id)
 
@@ -110,9 +104,6 @@ def render3D(user_id):
 
     progressRates[user_id] = 70
 
-    clip = (VideoFileClip("demo/outputs/"+str(user_id)+"/texture_animation.mp4"))
-    clip.write_gif("demo/outputs/"+str(user_id)+"/outImg.gif")
-    progressRates[user_id] = 90
     print("hi5", user_id)
     result = send_file("demo/outputs/"+str(user_id)+"/outImg.gif", mimetype='image/gif')
     print("hi6", user_id)
@@ -169,7 +160,7 @@ def request_entity_too_large(error):
 
 @app.route('/healthz')
 def health():
-  return 200
+  return "healthy", 200
 
 if __name__ == '__main__':
     import argparse

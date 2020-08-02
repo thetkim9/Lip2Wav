@@ -29,19 +29,17 @@
         <div class = "container">
             <div class="jumbotron mt-3">
 
-                <h1>3D Rendering of Human Face</h1>
-                <A>Git Hub Repo : </A> <A href="https://github.com/thetkim9/unsup3d"> unsup3d</A>
+                <h1>Inferring Speech from Lip Movement</h1>
+                <A>Git Hub Repo : </A> <A href="https://github.com/thetkim9/Lip2Wav"> Lip2Wav</A>
                 <br>
-                <A>Testing API : </A> <A href="https://ainize.ai/thetkim9/unsup3d"> on Ainize </A>
 
                 <hr class="solid">
 
                 <h3>Upload </h3>
-                <p>We recommend uploading images that mostly consist of human faces
-                    since images that require tough face recognition take longer to operate</p>
+                <p>Please upload videos that clearly show the lip movement of the speakers</p>
                 <p>Operation generally takes around 20~30 seconds</p>
-                <div id = 'inputImage'>
-                    <label for="source">insert 2D person image : </label>
+                <div id = 'inputVideo'>
+                    <label for="source">insert a video of a speaking person : </label>
                     <input type = 'file' id = 'source' onchange="readURL(this);" style="margin-right: 10px; margin-bottom: 10px;">
                     <input type="submit" id = "submit" class="btn btn-primary btn-lg" style="margin-left: auto;">
                 </div>
@@ -51,8 +49,8 @@
                 <p>Number of pending requests ahead: <span id="pending">0</span></p>
                 <div id ='resultBox' style="margin-left: auto; margin-right: auto;">
                     <p id='errorbox'></p>
-                    <img id="preload" src="{{ url_for('static', filename='sampleIn.png') }}">
-                    <img id="result" src="{{ url_for('static', filename='sampleOut.gif') }}">
+                    <img id="preload" src="{{ url_for('static', filename='sampleIn.mp4') }}">
+                    <img id="result" src="{{ url_for('static', filename='sampleOut.wav') }}">
                 </div>
                 <script src="{{ url_for('static', filename='jquery-3.5.1.js') }}"></script>
                 <script src="{{ url_for('static', filename='request.js') }}"></script>
