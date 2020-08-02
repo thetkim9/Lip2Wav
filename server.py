@@ -73,7 +73,7 @@ def lip2wav():
     return {'error': 'video not found'}, 400
 
   cap = cv2.VideoCapture(request.files['lip_video'].stream)
-
+  shutil.copyfileobj(request.files['lip_video'].stream, "inputs/input.mp4")
   try:
     global progressRates
     user_id = int(request.form.get('user_id'))
