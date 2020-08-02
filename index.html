@@ -49,8 +49,15 @@
                 <p>Number of pending requests ahead: <span id="pending">0</span></p>
                 <div id ='resultBox' style="margin-left: auto; margin-right: auto;">
                     <p id='errorbox'></p>
-                    <video id="preload" src="{{ url_for('static', filename='sampleIn.mp4') }}">
-                    <audio id="result" src="{{ url_for('static', filename='sampleOut.wav') }}">
+                    <video id="preload" width="320" height="240" controls>
+                        <source src="{{ url_for('static', filename='sampleIn.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <audio id="result" controls>
+                        <source src="{{ url_for('static', filename='sampleOut.wav') }}" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+
                 </div>
                 <script src="{{ url_for('static', filename='jquery-3.5.1.js') }}"></script>
                 <script src="{{ url_for('static', filename='request.js') }}"></script>
