@@ -72,8 +72,9 @@ def lip2wav():
   if not request.files.get('lip_video'):
     return {'error': 'video not found'}, 400
 
-  shutil.copyfileobj(request.files['lip_video'].stream, "inputs/input.mp4")
-  
+  temp = request.files['lip_video'].stream
+  temp.write("inputs/input.mp4")
+
   try:
     global progressRates
     user_id = int(request.form.get('user_id'))
