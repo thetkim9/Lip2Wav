@@ -58,7 +58,7 @@ def preprocess(user_id):
     parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset", default="input_preprocessed/")
     args = parser.parse_args()
 
-    pre.main(args)
+    pre.main(args, sub_model)
 
 def run_model(user_id):
     parser = argparse.ArgumentParser()
@@ -66,7 +66,7 @@ def run_model(user_id):
     parser.add_argument('-r', "--results_root", help="Speaker folder path", default="output/"+str(user_id))
     args = parser.parse_args()
 
-    run.run_model(args)
+    run.run_model(args, main_model)
 
 app = Flask(__name__, static_url_path="", template_folder="./")
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 8
@@ -213,5 +213,12 @@ if __name__ == '__main__':
     path = os.path.join(".", "output")
     os.mkdir(path)
 
+    global sub_model
+    sub_model = [pre.face_detection.FaceAlignment(pre.face_detection.LandmarksType._2D, flip_input=False,
+                                                  device='cuda:{}'.format(id)) for id in range(1)]
+
     run.sif.hparams.set_hparam('eval_ckpt', "../tacotron_model.ckpt-313000")
+    global main_model
+    main_model = run.Generator()
+
     app.run(debug=False, port=80, host='0.0.0.0', threaded=True)

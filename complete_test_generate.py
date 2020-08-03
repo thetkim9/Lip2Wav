@@ -78,7 +78,7 @@ def complete(folder):
 			return False
 	return True
 
-def run_model(args):
+def run_model(args, g):
 	videos = get_vidlist(args.data_root)
 	RESULTS_ROOT = args.results_root
 	if not os.path.isdir(RESULTS_ROOT):
@@ -98,7 +98,6 @@ def run_model(args):
 	for f in files_to_delete: os.remove(f)
 
 	hp = sif.hparams
-	g = Generator()
 	for vid in tqdm(videos):
 		if not complete(vid):
 			continue
@@ -124,4 +123,5 @@ if __name__ == '__main__':
 	parser.add_argument('--checkpoint', help="Path to trained checkpoint", required=True)
 	args = parser.parse_args()
 	sif.hparams.set_hparam('eval_ckpt', args.checkpoint)
-	run_model(args)
+	g = Generator()
+	run_model(args, g)

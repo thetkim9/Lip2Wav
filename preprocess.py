@@ -87,10 +87,9 @@ def mp_handler(job):
 	except:
 		traceback.print_exc()
 		
-def main(args):
+def main(args, model):
 	global fa
-	fa = [face_detection.FaceAlignment(face_detection.LandmarksType._2D, flip_input=False,
-									   device='cuda:{}'.format(id)) for id in range(args.ngpu)]
+	fa = model
 	print('Started processing for {} with {} GPUs'.format(args.data_root, args.ngpu))
 
 	filelist = glob(path.join(args.data_root, '*.mp4'))
