@@ -100,7 +100,7 @@ def lip2wav():
     path = os.path.join("input", str(user_id))
     os.mkdir(path)
     lip_video = request.files.get('lip_video')
-    with open("input/"+str(user_id)+"/input.mp4", 'wb') as f:
+    with open("input/"+str(user_id)+".mp4", 'wb') as f:
         f.write(lip_video.getvalue())
 
     '''
@@ -177,9 +177,11 @@ def remove(user_id):
             if threads[i].user_id == user_id and threads[i].is_alive():
                 threads[i].kill()
                 break
-        path = os.path.join("demo/inputs", str(user_id))
+        path = os.path.join("input", str(user_id))
         shutil.rmtree(path)
-        path = os.path.join("demo/outputs", str(user_id))
+        path = os.path.join("input_preprocessed", str(user_id))
+        shutil.rmtree(path)
+        path = os.path.join("output", str(user_id))
         shutil.rmtree(path)
     except:
         pass
