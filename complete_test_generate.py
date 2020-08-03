@@ -56,7 +56,7 @@ class Generator(object):
 		sif.audio.save_wav(wav, outfile, sr=hp.sample_rate)
 
 def get_vidlist(data_root):
-	test = synthesizer.hparams.get_image_list('test', data_root)
+	test = synthesizer.hparams.get_image_list(data_root)
 	test_vids = {}
 	for x in test:
 		x = x[:x.rfind('/')]
