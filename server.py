@@ -83,7 +83,7 @@ def lip2wav():
     return
 
   global threads
-  if len(threads)>5:
+  if len(threads)>4:
       return {'error': 'too many requests'}, 429
 
   print(request.files)
@@ -91,17 +91,26 @@ def lip2wav():
   if not request.files.get('lip_video'):
     return {'error': 'video not found'}, 400
 
+  user_id = int(request.form.get('user_id'))
+  path = os.path.join("input", str(user_id))
+  os.mkdir(path)
+  lip_video = request.files.get('lip_video')
+  with open("input/" + str(user_id) + "/" + str(user_id) + ".mp4", 'wb') as f:
+      f.write(lip_video.getvalue())
+
   try:
     global progressRates
     user_id = int(request.form.get('user_id'))
     print("hi1", user_id)
 
     #save video
+    '''
     path = os.path.join("input", str(user_id))
     os.mkdir(path)
     lip_video = request.files.get('lip_video')
     with open("input/"+str(user_id)+"/"+str(user_id)+".mp4", 'wb') as f:
         f.write(lip_video.getvalue())
+    '''
 
     '''
     if(lip_video.format!='mp4'):
