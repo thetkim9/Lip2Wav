@@ -100,7 +100,7 @@ def lip2wav():
     path = os.path.join("input", str(user_id))
     os.mkdir(path)
     lip_video = request.files.get('lip_video')
-    with open("input/"+str(user_id)+".mp4", 'wb') as f:
+    with open("input/"+str(user_id)+"/"+str(user_id)+".mp4", 'wb') as f:
         f.write(lip_video.getvalue())
 
     '''
