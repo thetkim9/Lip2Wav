@@ -44,6 +44,7 @@ class Synthesizer:
         #    model_name = checkpoints_dir.parent.name.replace("logs-", "")
         #    step = int(self.checkpoint_fpath[self.checkpoint_fpath.rfind('-') + 1:])
         #    print("Found synthesizer \"%s\" trained to step %d" % (model_name, step))
+        self.load()
      
     def is_loaded(self):
         """
@@ -73,8 +74,6 @@ class Synthesizer:
         :return: a list of N melspectrograms as numpy arrays of shape (80, Mi), where Mi is the 
         sequence length of spectrogram i, and possibly the alignments.
         """
-        if not self.is_loaded():
-            self.load()
         specs, alignments = self._model.my_synthesize(faces, embeddings)
         
         return (specs, alignments) if return_alignments else specs

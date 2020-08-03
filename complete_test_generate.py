@@ -53,7 +53,7 @@ class Generator(object):
 				mel = np.concatenate((mel, s[:, -remaining:]), axis=1)
 			else:
 				mel = np.concatenate((mel, s[:, hp.mel_overlap:]), axis=1)
-				
+
 		print("hi3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		wav = self.synthesizer.griffin_lim(mel)
 		sif.audio.save_wav(wav, outfile, sr=hp.sample_rate)
