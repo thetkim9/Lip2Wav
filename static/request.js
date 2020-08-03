@@ -7,11 +7,9 @@ window.onbeforeunload = function() {
         clearInterval(timer);
     }
     if (controller!=null) {
-        //alert("abort");
         controller.abort();
     }
     if (user_id!=null) {
-        //alert("abort");
         $.get('remove/' + user_id);
         console.log("abort");
     }
@@ -87,9 +85,8 @@ document.getElementById("submit").onclick = () => {
     .then(blob => URL.createObjectURL(blob))
     .then(audioURL => {
         document.getElementById("result").src = audioURL;
-        //document.body.innerHTML += imageURL;
         document.getElementById("errorbox").innerHTML = "";
-        //$.get('remove/' + user_id);
+        $.get('remove/' + user_id);
         submit.style.visibility = "visible";
     })
     .catch(e =>{

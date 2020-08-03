@@ -172,6 +172,7 @@ def progress(user_id):
 
 @app.route('/remove/<int:user_id>')
 def remove(user_id):
+    '''
     try:
         for i in range(len(threads)):
             if threads[i].user_id == user_id and threads[i].is_alive():
@@ -186,6 +187,7 @@ def remove(user_id):
     except:
         pass
     progressRates.pop(user_id, None)
+    '''
     return "0"
 
 @app.route('/pending/<int:user_id>')
