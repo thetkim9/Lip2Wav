@@ -57,7 +57,7 @@ def preprocess(user_id):
     parser.add_argument("--data_root", help="Root folder of the LRW dataset", default="input/"+str(user_id))
     parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset", default="input_preprocessed/"+str(user_id))
     args = parser.parse_args()
-    os.mkdir()
+
     pre.main(args)
 
 def run_model(user_id):
