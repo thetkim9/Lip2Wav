@@ -78,10 +78,8 @@ def process_video_file(vfile, args, gpu_id):
 
 def process_audio_file(vfile, args, gpu_id):
 	vidname = os.path.basename(vfile).split('.')[0]
-	split = vfile.split('/')[-2]
-	word = vfile.split('/')[-3]
 
-	fulldir = path.join(args.preprocessed_root, word, split, vidname)
+	fulldir = path.join(args.preprocessed_root, vidname)
 	os.makedirs(fulldir, exist_ok=True)
 
 	wavpath = path.join(fulldir, 'audio.wav')

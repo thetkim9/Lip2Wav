@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e989248d-6d8c-4568-9036-a53819bbaaeb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/complete_test_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/complete_test_generate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocess_speakers.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_speakers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0HzF2M2UYn.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0gMYs6pYol.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0ikEnNwEiH.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0jj1SMj8JM.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0HzF2M2UYn.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0gMYs6pYol.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0ikEnNwEiH.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0jj1SMj8JM.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0HzF2M2UYn.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0gMYs6pYol.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0ikEnNwEiH.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0jj1SMj8JM.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
