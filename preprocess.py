@@ -49,7 +49,9 @@ def process_video_file(vfile, args, gpu_id):
 			break
 		frames.append(frame)
 
-	fulldir = path.join(args.preprocessed_root)
+	vidname = os.path.basename(vfile).split('.')[0]
+
+	fulldir = path.join(args.preprocessed_root, vidname)
 	os.makedirs(fulldir, exist_ok=True)
 	#print (fulldir)
 
@@ -75,7 +77,9 @@ def process_video_file(vfile, args, gpu_id):
 
 
 def process_audio_file(vfile, args, gpu_id):
-	fulldir = path.join(args.preprocessed_root)
+	vidname = os.path.basename(vfile).split('.')[0]
+
+	fulldir = path.join(args.preprocessed_root, vidname)
 	os.makedirs(fulldir, exist_ok=True)
 
 	wavpath = path.join(fulldir, 'audio.wav')
