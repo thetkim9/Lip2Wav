@@ -150,7 +150,7 @@ def lip2wav():
     progressRates[user_id] = 90
 
     print("hi5", user_id)
-    result = send_file("output/"+str(user_id)+"/wavs/"+str(user_id)+".wav", mimetype='audio/wav')
+    result = send_file("output/"+str(user_id)+"/wavs/input_preprocessed_"+str(user_id)+".wav", mimetype='audio/wav')
     print("hi6", user_id)
     response = make_response(result)
     print("hi7", user_id)
@@ -172,7 +172,6 @@ def progress(user_id):
 
 @app.route('/remove/<int:user_id>')
 def remove(user_id):
-    '''
     try:
         for i in range(len(threads)):
             if threads[i].user_id == user_id and threads[i].is_alive():
@@ -187,7 +186,6 @@ def remove(user_id):
     except:
         pass
     progressRates.pop(user_id, None)
-    '''
     return "0"
 
 @app.route('/pending/<int:user_id>')
