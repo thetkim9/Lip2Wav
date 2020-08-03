@@ -27,6 +27,7 @@ class Generator(object):
 		return images
 
 	def vc(self, sample, outfile):
+		print("hi1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		hp = sif.hparams
 		id_windows = [range(i, i + hp.T) for i in range(0, (sample['till'] // hp.T) * hp.T, 
 					hp.T - hp.overlap) if (i + hp.T <= (sample['till'] // hp.T) * hp.T)]
@@ -38,6 +39,7 @@ class Generator(object):
 		ref = np.load(os.path.join(os.path.dirname(sample['folder']), 'ref.npz'))['ref'][0]
 		ref = np.expand_dims(ref, 0)
 
+		print("hi2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		for window_idx, window_fnames in enumerate(all_windows):
 			images = self.read_window(window_fnames)
 
@@ -51,7 +53,8 @@ class Generator(object):
 				mel = np.concatenate((mel, s[:, -remaining:]), axis=1)
 			else:
 				mel = np.concatenate((mel, s[:, hp.mel_overlap:]), axis=1)
-			
+				
+		print("hi3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		wav = self.synthesizer.griffin_lim(mel)
 		sif.audio.save_wav(wav, outfile, sr=hp.sample_rate)
 
@@ -97,7 +100,6 @@ def run_model(args, g):
 		files_to_delete.extend(list(glob(WAVS_ROOT + '*')))
 	for f in files_to_delete: os.remove(f)
 
-	hp = sif.hparams
 	for vid in tqdm(videos):
 		if not complete(vid):
 			continue

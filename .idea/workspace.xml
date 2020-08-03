@@ -4,8 +4,6 @@
     <list default="true" id="e989248d-6d8c-4568-9036-a53819bbaaeb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/complete_test_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/complete_test_generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/clip_0HzF2M2UYn.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

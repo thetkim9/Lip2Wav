@@ -218,6 +218,7 @@ if __name__ == '__main__':
                                                   device='cuda:{}'.format(id)) for id in range(1)]
 
     run.sif.hparams.set_hparam('eval_ckpt', "../tacotron_model.ckpt-313000")
+    hp = run.sif.hparams
     global main_model
     main_model = run.Generator()
 
