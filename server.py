@@ -150,7 +150,7 @@ def lip2wav():
     progressRates[user_id] = 90
 
     print("hi5", user_id)
-    result = send_file("output/"+str(user_id)+"/outImg.gif", mimetype='audio/mp3')
+    result = send_file("output/"+str(user_id)+"/wav/"+str(user_id)+".wav", mimetype='audio/wav')
     print("hi6", user_id)
     response = make_response(result)
     print("hi7", user_id)
