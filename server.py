@@ -96,7 +96,7 @@ def lip2wav():
   os.mkdir(path)
   lip_video = request.files.get('lip_video')
   with open("input/" + str(user_id) + "/" + str(user_id) + ".mp4", 'wb') as f:
-      f.write(lip_video.getvalue())
+      f.write(lip_video.read())
 
   try:
     global progressRates
