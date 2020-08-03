@@ -55,7 +55,7 @@ def preprocess(user_id):
     parser.add_argument('--ngpu', help='Number of GPUs across which to run in parallel', default=1, type=int)
     parser.add_argument('--batch_size', help='Single GPU Face detection batch size', default=32, type=int)
     parser.add_argument("--data_root", help="Root folder of the LRW dataset", default="input/"+str(user_id))
-    parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset", default="input_preprocessed/"+str(user_id))
+    parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset", default="input_preprocessed/")
     args = parser.parse_args()
 
     pre.main(args)
