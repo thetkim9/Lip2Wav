@@ -20,21 +20,6 @@ from synthesizer.hparams import hparams as hp
 
 import face_detection
 
-parser = argparse.ArgumentParser()
-
-parser.add_argument('--ngpu', help='Number of GPUs across which to run in parallel', default=1, type=int)
-parser.add_argument('--batch_size', help='Single GPU Face detection batch size', default=32, type=int)
-parser.add_argument("--data_root", help="Root folder of the LRW dataset", required=True)
-parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset", required=True)
-parser.add_argument("--split", help="* | train | val | test (* will preprocess all splits)", default="test", 
-										choices=["*", "train", "val", "test"])
-
-
-args = parser.parse_args()
-
-fa = [face_detection.FaceAlignment(face_detection.LandmarksType._2D, flip_input=False, 
-									device='cuda:{}'.format(id)) for id in range(args.ngpu)]
-
 # template = 'ffmpeg -loglevel panic -y -i {} -ar {} -f wav {}'
 template2 = 'ffmpeg -hide_banner -loglevel panic -threads 1 -y -i {} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {}'
 
@@ -103,6 +88,9 @@ def mp_handler(job):
 		traceback.print_exc()
 		
 def main(args):
+	global fa
+	fa = [face_detection.FaceAlignment(face_detection.LandmarksType._2D, flip_input=False,
+									   device='cuda:{}'.format(id)) for id in range(args.ngpu)]
 	print('Started processing for {} with {} GPUs'.format(args.data_root, args.ngpu))
 
 	filelist = glob(path.join(args.data_root, '*.mp4'))
