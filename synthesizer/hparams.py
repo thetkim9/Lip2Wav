@@ -2,9 +2,8 @@ from tensorflow.contrib.training import HParams
 from glob import glob
 import os, pickle
 
-def get_image_list(split, data_root):
-    assert split in ['test', 'val', 'train']
-    filelist = list(glob(os.path.join(data_root, '*/{}/*/*.jpg'.format(split))))
+def get_image_list(data_root):
+    filelist = list(glob(os.path.join(data_root, '*.jpg')))
 
     print('Test filelist contains {} images'.format(len(filelist)))
     
