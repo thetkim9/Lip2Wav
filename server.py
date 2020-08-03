@@ -72,8 +72,13 @@ def lip2wav():
   if not request.files.get('lip_video'):
     return {'error': 'video not found'}, 400
 
-  temp = request.files['lip_video'].stream
-  temp.write("inputs/input.mp4")
+  #temp = request.files['lip_video'].stream
+  #temp.write("inputs/input.mp4")
+  upload = request.files.get('lip_video')
+  raw = upload.file.read().encode('ISO-8859-1')
+  #filename = upload.filename
+  with open("inputs/input.mp4", 'wb') as f:
+      f.write(raw)
 
   try:
     global progressRates
