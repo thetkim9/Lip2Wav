@@ -78,17 +78,8 @@ def complete(folder):
 			return False
 	return True
 
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser()
-	parser.add_argument('-d', "--data_root", help="Speaker folder path", required=True)
-	parser.add_argument('-r', "--results_root", help="Speaker folder path", required=True)
-	parser.add_argument('--checkpoint', help="Path to trained checkpoint", required=True)
-	args = parser.parse_args()
-
-	sif.hparams.set_hparam('eval_ckpt', args.checkpoint)
-
+def run_model(args):
 	videos = get_vidlist(args.data_root)
-
 	RESULTS_ROOT = args.results_root
 	if not os.path.isdir(RESULTS_ROOT):
 		os.mkdir(RESULTS_ROOT)
@@ -125,3 +116,12 @@ if __name__ == '__main__':
 		g.vc(sample, outfile)
 
 		copy(vidpath + 'audio.wav', GTS_ROOT + vidname + '.wav')
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-d', "--data_root", help="Speaker folder path", required=True)
+	parser.add_argument('-r', "--results_root", help="Speaker folder path", required=True)
+	parser.add_argument('--checkpoint', help="Path to trained checkpoint", required=True)
+	args = parser.parse_args()
+	sif.hparams.set_hparam('eval_ckpt', args.checkpoint)
+	run_model(args)

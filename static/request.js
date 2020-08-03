@@ -83,21 +83,7 @@ document.getElementById("submit").onclick = () => {
             throw Error("rendering error:");
         }
     })
-    .then(response => {
-        var id = -1;
-        for (var pair of response.headers.entries()) {
-            if (pair[0]=="content-type") {
-                id = pair[1]
-                break;
-            }
-        }
-        if (parseInt(id) == user_id) {
-            console.log(id);
-            return response.blob();
-        }
-        else
-            throw Error("response to different user");
-    })
+    .then(response => {return response.blob();})
     .then(blob => URL.createObjectURL(blob))
     .then(imageURL => {
         document.getElementById("result").src = imageURL;

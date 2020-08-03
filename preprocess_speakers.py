@@ -47,7 +47,7 @@ def mp_handler(job):
 def dump(args):
 	print('Started processing for with {} CPU cores'.format(args.num_workers))
 
-	filelist = glob(path.join(args.preprocessed_root, '*', '*', '*', 'audio.wav'))
+	filelist = glob(path.join(args.preprocessed_root, 'audio.wav'))
 
 	jobs = [(vfile, args) for vfile in filelist]
 	p = ThreadPoolExecutor(args.num_workers)

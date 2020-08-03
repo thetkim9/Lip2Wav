@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e989248d-6d8c-4568-9036-a53819bbaaeb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/complete_test_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/complete_test_generate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess_speakers.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocess_speakers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0HzF2M2UYn.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0gMYs6pYol.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0ikEnNwEiH.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/word1/test/clip_0jj1SMj8JM.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0HzF2M2UYn.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0gMYs6pYol.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0ikEnNwEiH.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/gts/test_clip_0jj1SMj8JM.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0HzF2M2UYn.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0gMYs6pYol.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0ikEnNwEiH.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_test_results/wavs/test_clip_0jj1SMj8JM.wav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +53,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1488" y="180" width="586" height="490" key="find.popup" timestamp="1596012032746">
-      <screen x="1440" y="23" width="1920" height="1057" />
+    <state x="36" y="142" width="574" height="490" key="find.popup" timestamp="1596430291508">
+      <screen x="0" y="23" width="1440" height="801" />
     </state>
     <state x="1488" y="180" width="586" height="490" key="find.popup/0.23.1440.798/1440.23.1920.1057@1440.23.1920.1057" timestamp="1596012032746" />
+    <state x="36" y="142" width="574" height="490" key="find.popup/0.23.1440.801@0.23.1440.801" timestamp="1596430291508" />
   </component>
 </project>

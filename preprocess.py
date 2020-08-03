@@ -50,10 +50,8 @@ def process_video_file(vfile, args, gpu_id):
 		frames.append(frame)
 	
 	vidname = os.path.basename(vfile).split('.')[0]
-	split = vfile.split('/')[-2]
-	word = vfile.split('/')[-3]
 
-	fulldir = path.join(args.preprocessed_root, word, split, vidname)
+	fulldir = path.join(args.preprocessed_root, vidname)
 	os.makedirs(fulldir, exist_ok=True)
 	#print (fulldir)
 
@@ -109,7 +107,7 @@ def mp_handler(job):
 def main(args):
 	print('Started processing for {} with {} GPUs'.format(args.data_root, args.ngpu))
 
-	filelist = glob(path.join(args.data_root, '*/{}/*.mp4'.format(args.split)))
+	filelist = glob(path.join(args.data_root, '*.mp4'))
 
 	jobs = [(vfile, args, i%args.ngpu) for i, vfile in enumerate(filelist)]
 	p = ThreadPoolExecutor(args.ngpu)
