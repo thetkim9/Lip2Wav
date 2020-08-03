@@ -101,4 +101,5 @@ def main(args):
 	_ = [r.result() for r in tqdm(as_completed(futures), total=len(futures))]
 
 if __name__ == '__main__':
-	main(args)
+	pass
+	#main(args)

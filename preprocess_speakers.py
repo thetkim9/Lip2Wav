@@ -54,13 +54,6 @@ def dump(args):
 	futures = [p.submit(mp_handler, j) for j in jobs]
 	_ = [r.result() for r in tqdm(as_completed(futures), total=len(futures))]
 
-parser = argparse.ArgumentParser()
-
-parser.add_argument('--num_workers', help='Number of workers to run in parallel', default=8, type=int)
-parser.add_argument("--preprocessed_root", help="Folder where preprocessed files will reside", 
-					required=True)
-
-args = parser.parse_args()
-
 if __name__ == '__main__':
-	dump(args)
+	pass
+	#dump(args)
