@@ -85,17 +85,15 @@ document.getElementById("submit").onclick = () => {
     })
     .then(response => {return response.blob();})
     .then(blob => URL.createObjectURL(blob))
-    .then(imageURL => {
-        document.getElementById("result").src = imageURL;
+    .then(audioURL => {
+        document.getElementById("result").src = audioURL;
         //document.body.innerHTML += imageURL;
         document.getElementById("errorbox").innerHTML = "";
-        $.get('remove/' + user_id);
+        //$.get('remove/' + user_id);
         submit.style.visibility = "visible";
     })
     .catch(e =>{
-        if (e!=Error("response to different user")) {
-            document.getElementById("errorbox").innerHTML = e;
-            $.get('remove/' + user_id);
-        }
+        document.getElementById("errorbox").innerHTML = e;
+        $.get('remove/' + user_id);
     })
 }
