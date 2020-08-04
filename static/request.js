@@ -25,15 +25,18 @@ function check_progress(task_id, progress_bar) {
     var time_spent = document.getElementById("time");
     var temp = [".", "..", "..."];
     var time = 0;
+    var stopPending;
     function worker() {
       $.get('progress/' + task_id, function(progress) {
           progress_bar.value = Math.min(parseInt(progress), 100).toString();
+          stopPending = progress;
           time += 1;
           time_spent.innerHTML = time;
           dots.innerHTML = temp[time%3];
           if (parseInt(progress)>=100) {
             dots.innerHTML = " complete";
             clearInterval(timer);
+            timer = null;
           }
       })
     }
@@ -41,8 +44,9 @@ function check_progress(task_id, progress_bar) {
     function worker2() {
       $.get('pending/' + task_id, function(order) {
           pending.innerHTML = order;
-          if (parseInt(progress_bar.value)==100) {
+          if (timer==null) {
             clearInterval(timer2);
+            timer2 = null;
           }
       })
     }
