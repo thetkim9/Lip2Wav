@@ -66,11 +66,11 @@ document.getElementById("cancel").onclick = () => {
 }
 
 document.getElementById("submit").onclick = () => {
-    submit.style.visibility = "hidden";
     document.getElementById("result").src = "";
     var formData = new FormData();
     var source = document.getElementById('source').files[0];
     var submit = document.getElementById('submit');
+    submit.style.visibility = "hidden";
     //const { v4: uuidv4 } = require('uuid');
     //var user_id = uuidv4();
     user_id = Math.floor(Math.random()*1000000000);
