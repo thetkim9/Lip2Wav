@@ -83,7 +83,7 @@ def lip2wav():
     return
 
   global threads
-  if len(threads)>4:
+  if len(threads)>3:
       return {'error': 'too many requests'}, 429
 
   print(request.files)
