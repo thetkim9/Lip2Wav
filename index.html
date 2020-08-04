@@ -43,7 +43,8 @@
                     <label for="source">insert a video of a speaking person : </label>
                     <input type = 'file' id = 'source' onchange="readURL(this);" style="margin-right: 10px; margin-bottom: 10px;">
                     <input type="submit" id = "submit" class="btn btn-primary btn-lg" style="margin-left: auto;">
-                    <input type="submit" id = "cancel" class="btn btn-primary btn-lg" style="margin-left: auto;" value="cancel">
+                    <input type="submit" id = "cancel" class="btn btn-primary btn-lg" style="margin-left: auto;" value="cancel"
+                    disabled="disabled">
                 </div>
                 <progress id="progress_bar" value="0" max="100"> </progress>
                 <p id="load">loading<span id="dots">.</span></p>

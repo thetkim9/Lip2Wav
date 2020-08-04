@@ -1,6 +1,6 @@
 var controller;
 document.body.onload = function() {
-    document.getElementById("cancel").style.visibility = "hidden";
+    document.getElementById("cancel").disabled = true;
     document.getElementById("load").style.visibility = "hidden";
 }
 window.onbeforeunload = function() {
@@ -60,18 +60,19 @@ document.getElementById("cancel").onclick = () => {
         $.get('remove/' + user_id);
         console.log("abort");
     }
-    document.getElementById("cancel").style.visibility = "hidden";
-    document.getElementById('submit').style.visibility = "visible";
+    //document.getElementById("cancel").style.visibility = "hidden";
+    document.getElementById("cancel").disabled = true;
+    //document.getElementById('submit').style.visibility = "visible";
+    document.getElementById("submit").disabled = false;
 }
 
 document.getElementById("submit").onclick = () => {
-    console.log("hi1");
     document.getElementById("result").src = "";
     var formData = new FormData();
     var source = document.getElementById('source').files[0];
     var submit = document.getElementById('submit');
-    submit.style.visibility = "hidden";
-    console.log("hi2");
+    //submit.style.visibility = "hidden";
+    document.getElementById("submit").disabled = true;
     //const { v4: uuidv4 } = require('uuid');
     //var user_id = uuidv4();
     user_id = Math.floor(Math.random()*1000000000);
@@ -82,8 +83,8 @@ document.getElementById("submit").onclick = () => {
     check_progress(user_id, progress_bar);
     controller = new AbortController();
     var abort = controller.signal;
-    document.getElementById("cancel").style.visibility = "visible";
-    console.log("hi3");
+    //document.getElementById("cancel").style.visibility = "visible";
+    document.getElementById("cancel").disabled = false;
     fetch(
         '/lip2wav',
         {
@@ -106,13 +107,17 @@ document.getElementById("submit").onclick = () => {
         document.getElementById("result").src = audioURL;
         document.getElementById("errorbox").innerHTML = "";
         $.get('remove/' + user_id);
-        document.getElementById("cancel").style.visibility = "hidden";
-        submit.style.visibility = "visible";
+        //document.getElementById("cancel").style.visibility = "hidden";
+        document.getElementById("cancel").disabled = true;
+        //submit.style.visibility = "visible";
+        document.getElementById("submit").disabled = false;
     })
     .catch(e =>{
         document.getElementById("errorbox").innerHTML = e;
         $.get('remove/' + user_id);
-        document.getElementById("cancel").style.visibility = "hidden";
-        submit.style.visibility = "visible";
+        //document.getElementById("cancel").style.visibility = "hidden";
+        document.getElementById("cancel").disabled = true;
+        //submit.style.visibility = "visible";
+        document.getElementById("submit").disabled = false;
     })
 }
