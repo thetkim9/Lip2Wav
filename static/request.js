@@ -1,5 +1,6 @@
 var controller;
 document.body.onload = function() {
+    document.getElementById("cancel").style.visibility = "hidden";
     document.getElementById("load").style.visibility = "hidden";
 }
 window.onbeforeunload = function() {
@@ -49,12 +50,27 @@ function check_progress(task_id, progress_bar) {
     timer2 = setInterval(worker2, 3000);
 }
 
+document.getElementById("cancel").onclick = () => {
+    if (timer!=null) {
+        clearInterval(timer);
+    }
+    if (controller!=null) {
+        controller.abort();
+    }
+    if (user_id!=null) {
+        $.get('remove/' + user_id);
+        console.log("abort");
+    }
+    document.getElementById("cancel").style.visibility = "hidden";
+    submit.style.visibility = "visible";
+}
+
 document.getElementById("submit").onclick = () => {
+    submit.style.visibility = "hidden";
     document.getElementById("result").src = "";
     var formData = new FormData();
     var source = document.getElementById('source').files[0];
     var submit = document.getElementById('submit');
-    submit.style.visibility = "hidden";
     //const { v4: uuidv4 } = require('uuid');
     //var user_id = uuidv4();
     user_id = Math.floor(Math.random()*1000000000);
@@ -65,6 +81,7 @@ document.getElementById("submit").onclick = () => {
     check_progress(user_id, progress_bar);
     controller = new AbortController();
     var abort = controller.signal;
+    document.getElementById("cancel").style.visibility = "visible";
     fetch(
         '/lip2wav',
         {
@@ -87,10 +104,13 @@ document.getElementById("submit").onclick = () => {
         document.getElementById("result").src = audioURL;
         document.getElementById("errorbox").innerHTML = "";
         $.get('remove/' + user_id);
+        document.getElementById("cancel").style.visibility = "hidden";
         submit.style.visibility = "visible";
     })
     .catch(e =>{
         document.getElementById("errorbox").innerHTML = e;
         $.get('remove/' + user_id);
+        document.getElementById("cancel").style.visibility = "hidden";
+        submit.style.visibility = "visible";
     })
 }
