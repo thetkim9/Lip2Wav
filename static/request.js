@@ -12,7 +12,6 @@ window.onbeforeunload = function() {
     }
     if (user_id!=null) {
         $.get('remove/' + user_id);
-        console.log("abort");
     }
     return "Do you really want to leave this page?";
 }
@@ -66,11 +65,13 @@ document.getElementById("cancel").onclick = () => {
 }
 
 document.getElementById("submit").onclick = () => {
+    console.log("hi1");
     document.getElementById("result").src = "";
     var formData = new FormData();
     var source = document.getElementById('source').files[0];
     var submit = document.getElementById('submit');
     submit.style.visibility = "hidden";
+    console.log("hi2");
     //const { v4: uuidv4 } = require('uuid');
     //var user_id = uuidv4();
     user_id = Math.floor(Math.random()*1000000000);
@@ -82,6 +83,7 @@ document.getElementById("submit").onclick = () => {
     controller = new AbortController();
     var abort = controller.signal;
     document.getElementById("cancel").style.visibility = "visible";
+    console.log("hi3");
     fetch(
         '/lip2wav',
         {
