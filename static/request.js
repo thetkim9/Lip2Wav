@@ -62,7 +62,7 @@ document.getElementById("cancel").onclick = () => {
         console.log("abort");
     }
     document.getElementById("cancel").style.visibility = "hidden";
-    submit.style.visibility = "visible";
+    document.getElementById('submit').style.visibility = "visible";
 }
 
 document.getElementById("submit").onclick = () => {
