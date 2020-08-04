@@ -7,6 +7,9 @@ window.onbeforeunload = function() {
     if (timer!=null) {
         clearInterval(timer);
     }
+    if (timer2!=null) {
+        clearInterval(timer2);
+    }
     if (controller!=null) {
         controller.abort();
     }
@@ -56,6 +59,9 @@ function check_progress(task_id, progress_bar) {
 document.getElementById("cancel").onclick = () => {
     if (timer!=null) {
         clearInterval(timer);
+    }
+    if (timer2!=null) {
+        clearInterval(timer2);
     }
     if (controller!=null) {
         controller.abort();
