@@ -178,14 +178,12 @@ def remove(user_id):
             if threads[i].user_id == user_id and threads[i].is_alive():
                 threads[i].kill()
                 break
-        '''
         path = os.path.join("input", str(user_id))
         shutil.rmtree(path)
         path = os.path.join("input_preprocessed", str(user_id))
         shutil.rmtree(path)
         path = os.path.join("output", str(user_id))
         shutil.rmtree(path)
-        '''
     except:
         pass
     progressRates.pop(user_id, None)
