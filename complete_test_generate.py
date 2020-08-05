@@ -84,6 +84,7 @@ def complete(folder):
 def run_model(args, g):
 	print("run hi1")
 	videos = get_vidlist(args.data_root)
+	print("videos")
 	RESULTS_ROOT = args.results_root
 	if not os.path.isdir(RESULTS_ROOT):
 		os.mkdir(RESULTS_ROOT)
@@ -106,24 +107,22 @@ def run_model(args, g):
 		files_to_delete.extend(list(glob(WAVS_ROOT + '*')))
 	for f in files_to_delete: os.remove(f)
 	print("run hi3")
-	for vid in tqdm(videos):
-		print(vid)
-		if not complete(vid):
-			continue
+	print("run hi4")
+	vid = videos[0]
 
-		sample = {}
-		vidpath = vid + '/'
+	sample = {}
+	vidpath = vid + '/'
 
-		sample['folder'] = vidpath + '{}.jpg'
+	sample['folder'] = vidpath + '{}.jpg'
 
-		images = glob(vidpath + '*.jpg')
-		sample['till'] = (len(images) // 5) * 5
+	images = glob(vidpath + '*.jpg')
+	sample['till'] = (len(images) // 5) * 5
 
-		vidname = vid.split('/')[-2] + '_' + vid.split('/')[-1]
-		outfile = WAVS_ROOT + vidname + '.wav'
-		g.vc(sample, outfile)
+	vidname = vid.split('/')[-2] + '_' + vid.split('/')[-1]
+	outfile = WAVS_ROOT + vidname + '.wav'
+	g.vc(sample, outfile)
 
-		#copy(vidpath + 'audio.wav', GTS_ROOT + vidname + '.wav')
+	#copy(vidpath + 'audio.wav', GTS_ROOT + vidname + '.wav')
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
