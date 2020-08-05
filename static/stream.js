@@ -60,9 +60,7 @@ if (document.getElementById("webcam0")!=null) {
         .then (recordedChunks => {
                 let recordedBlob = new Blob(recordedChunks, { type: "video/mp4" });
                 recording.src = URL.createObjectURL(recordedBlob);
-                document.body.innerHTML += "hi1";
                 document.getElementById('source').files[0] = recording.src;
-                document.body.innerHTML += "hi2";
                 log("Successfully recorded " + recordedBlob.size + " bytes of " +
                     recordedBlob.type + " media.");
               }).catch(log);
