@@ -97,7 +97,7 @@ def run_model(args, g):
 	else:
 		files_to_delete = list(glob(GTS_ROOT + '*'))
 	'''
-	
+
 	if not os.path.isdir(WAVS_ROOT):
 		os.mkdir(WAVS_ROOT)
 	else:

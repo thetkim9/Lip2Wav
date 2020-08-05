@@ -124,6 +124,7 @@ def lip2wav():
     print(threads.pop(0))
     print(user_id, "first GPU task complete~~~~~~~~~~~~~~~~~")
 
+    '''
     print(user_id, "hi3")
     parser = argparse.ArgumentParser()
     parser.add_argument('--num_workers', help='Number of workers to run in parallel', default=8, type=int)
@@ -131,6 +132,7 @@ def lip2wav():
     args = parser.parse_args()
 
     prespe.dump(args)
+    '''
     progressRates[user_id] = 40
 
     print("hi4", user_id)
