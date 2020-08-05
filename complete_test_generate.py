@@ -82,6 +82,7 @@ def complete(folder):
 	return True
 
 def run_model(args, g):
+	print("run hi1")
 	videos = get_vidlist(args.data_root)
 	RESULTS_ROOT = args.results_root
 	if not os.path.isdir(RESULTS_ROOT):
@@ -91,6 +92,7 @@ def run_model(args, g):
 	WAVS_ROOT = os.path.join(RESULTS_ROOT, 'wavs/')
 	files_to_delete = []
 
+	print("run hi2")
 	'''
 	if not os.path.isdir(GTS_ROOT):
 		os.mkdir(GTS_ROOT)
@@ -103,8 +105,9 @@ def run_model(args, g):
 	else:
 		files_to_delete.extend(list(glob(WAVS_ROOT + '*')))
 	for f in files_to_delete: os.remove(f)
-
+	print("run hi3")
 	for vid in tqdm(videos):
+		print(vid)
 		if not complete(vid):
 			continue
 
