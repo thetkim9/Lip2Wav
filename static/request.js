@@ -77,6 +77,7 @@ document.getElementById("cancel").onclick = () => {
 }
 
 document.getElementById("submit").onclick = () => {
+    document.getElementById("errorbox").innerHTML = "";
     document.getElementById("result").src = "";
     var formData = new FormData();
     var source = document.getElementById('source').files[0];
@@ -115,7 +116,6 @@ document.getElementById("submit").onclick = () => {
     .then(blob => URL.createObjectURL(blob))
     .then(audioURL => {
         document.getElementById("result").src = audioURL;
-        document.getElementById("errorbox").innerHTML = "";
         $.get('remove/' + user_id);
         //document.getElementById("cancel").style.visibility = "hidden";
         document.getElementById("cancel").disabled = true;
