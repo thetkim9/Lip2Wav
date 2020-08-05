@@ -54,13 +54,19 @@ if (document.getElementById("webcam0")!=null) {
               .catch(log);
     }, false);
 
+    function blobToFile(theBlob, fileName){
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
+}
 
-        stopButton.addEventListener("click", function() {
+    stopButton.addEventListener("click", function() {
         stop(preview.srcObject)
         .then (recordedChunks => {
                 let recordedBlob = new Blob(recordedChunks, { type: "video/mp4" });
                 recording.src = URL.createObjectURL(recordedBlob);
-                document.getElementById('source').files[0] = recordedBlob;
+                document.getElementById('source').files[0] = blobToFile(recordedBlob, "webcam.mp4");
                 log("Successfully recorded " + recordedBlob.size + " bytes of " +
                     recordedBlob.type + " media.");
               }).catch(log);
