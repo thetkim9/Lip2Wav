@@ -77,10 +77,13 @@ document.getElementById("cancel").onclick = () => {
 }
 
 document.getElementById("submit").onclick = () => {
+    document.body.innerHTML += "hi2.5";
     document.getElementById("errorbox").innerHTML = "";
     document.getElementById("result").src = "";
     var formData = new FormData();
+    document.body.innerHTML += "hi3";
     var source = document.getElementById('source').files[0];
+    document.body.innerHTML += "hi4";
     var submit = document.getElementById('submit');
     //submit.style.visibility = "hidden";
     document.getElementById("submit").disabled = true;
