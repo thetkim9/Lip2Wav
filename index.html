@@ -50,14 +50,15 @@
                         <input type = 'file' id = 'source' onchange="readURL(this);" style="margin-right: 10px; margin-bottom: 10px;">
                     </div>
                     <div id="webcam0" style="position:relative; top:0; left:0;">
-                        <input type="button" id="startButton" class="button" value="start">
-                        <input type="button" id="stopButton" class="button" value="stop">
                         <h4>Preview</h4>
-                        <video id="preview" width="160" height="120" autoplay muted></video>
+                        <video id="preview" width="160" height="120" autoplay muted></video><br>
+                        <input type="button" id="startButton" class="button" value="start recording">
+                        <input type="button" id="stopButton" class="button" value="stop recording">
                     </div>
+                </div><br>
                 <div id="operate">
-                    <input type="submit" id = "submit" class="btn btn-primary btn-lg" style="margin-left: auto;">
-                    <input type="submit" id = "cancel" class="btn btn-primary btn-lg" style="margin-left: auto;" value="Cancel"
+                    <input type="submit" id = "submit" class="btn btn-primary btn-lg" style="margin-left: auto;" value="Submit Video">
+                    <input type="submit" id = "cancel" class="btn btn-primary btn-lg" style="margin-left: auto;" value="Cancel Video"
                     disabled="disabled">
                 </div><br>
                 <progress id="progress_bar" value="0" max="100"> </progress>
@@ -90,7 +91,6 @@
                 <script src="{{ url_for('static', filename='jquery-3.5.1.js') }}"></script>
                 <script src="{{ url_for('static', filename='request.js') }}"></script>
                 <script src="{{ url_for('static', filename='stream.js') }}"></script>
-            </div>
         </div>
     </body>
 </HTML>
