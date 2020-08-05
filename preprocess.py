@@ -24,7 +24,6 @@ import face_detection
 template2 = 'ffmpeg -hide_banner -loglevel panic -threads 1 -y -i {} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {}'
 
 def process_video_file(vfile, args, gpu_id):
-	print("hi1")
 	video_stream = cv2.VideoCapture(vfile)
 	
 	frames = []
@@ -36,19 +35,18 @@ def process_video_file(vfile, args, gpu_id):
 		frames.append(frame)
 
 	vidname = os.path.basename(vfile).split('.')[0]
-	print("hi2")
+
 	fulldir = path.join(args.preprocessed_root, vidname)
 	os.makedirs(fulldir, exist_ok=True)
 	#print (fulldir)
 
 	wavpath = path.join(fulldir, 'audio.wav')
-	#print(wavpath)
-	#specpath = path.join(fulldir, 'mels.npz')
+	print(wavpath)
+	specpath = path.join(fulldir, 'mels.npz')
 
 	command = template2.format(vfile, wavpath)
-	print(command)
 	subprocess.call(command, shell=True)
-	print("hi3")
+
 	batches = [frames[i:i + args.batch_size] for i in range(0, len(frames), args.batch_size)]
 
 	i = -1
@@ -61,7 +59,6 @@ def process_video_file(vfile, args, gpu_id):
 				continue
 
 			cv2.imwrite(path.join(fulldir, '{}.jpg'.format(i)), f[0])
-	print("hi5")
 
 
 def process_audio_file(vfile, args, gpu_id):
@@ -84,7 +81,7 @@ def mp_handler(job):
 	vfile, args, gpu_id = job
 	try:
 		process_video_file(vfile, args, gpu_id)
-		#process_audio_file(vfile, args, gpu_id)
+		process_audio_file(vfile, args, gpu_id)
 	except KeyboardInterrupt:
 		exit(0)
 	except:
