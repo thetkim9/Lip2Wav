@@ -81,7 +81,7 @@ def mp_handler(job):
 	vfile, args, gpu_id = job
 	try:
 		process_video_file(vfile, args, gpu_id)
-		process_audio_file(vfile, args, gpu_id)
+		#process_audio_file(vfile, args, gpu_id)
 	except KeyboardInterrupt:
 		exit(0)
 	except:

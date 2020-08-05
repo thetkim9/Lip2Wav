@@ -87,13 +87,17 @@ def run_model(args, g):
 	if not os.path.isdir(RESULTS_ROOT):
 		os.mkdir(RESULTS_ROOT)
 
-	GTS_ROOT = os.path.join(RESULTS_ROOT, 'gts/')
+	#GTS_ROOT = os.path.join(RESULTS_ROOT, 'gts/')
 	WAVS_ROOT = os.path.join(RESULTS_ROOT, 'wavs/')
 	files_to_delete = []
+
+	'''
 	if not os.path.isdir(GTS_ROOT):
 		os.mkdir(GTS_ROOT)
 	else:
 		files_to_delete = list(glob(GTS_ROOT + '*'))
+	'''
+	
 	if not os.path.isdir(WAVS_ROOT):
 		os.mkdir(WAVS_ROOT)
 	else:
@@ -116,7 +120,7 @@ def run_model(args, g):
 		outfile = WAVS_ROOT + vidname + '.wav'
 		g.vc(sample, outfile)
 
-		copy(vidpath + 'audio.wav', GTS_ROOT + vidname + '.wav')
+		#copy(vidpath + 'audio.wav', GTS_ROOT + vidname + '.wav')
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
