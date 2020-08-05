@@ -17,6 +17,9 @@ if (document.getElementById("webcam0")!=null) {
     var data;
     function startRecording(stream) {
         recorder = new MediaRecorder(stream);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         data = [];
 
         recorder.ondataavailable = event => data.push(event.data);
