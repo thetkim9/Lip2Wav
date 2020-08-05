@@ -41,11 +41,12 @@ def process_video_file(vfile, args, gpu_id):
 	os.makedirs(fulldir, exist_ok=True)
 	#print (fulldir)
 
-	#wavpath = path.join(fulldir, 'audio.wav')
+	wavpath = path.join(fulldir, 'audio.wav')
 	#print(wavpath)
 	#specpath = path.join(fulldir, 'mels.npz')
 
-	command = template2.format(vfile)
+	command = template2.format(vfile, wavpath)
+	print(command)
 	subprocess.call(command, shell=True)
 	print("hi3")
 	batches = [frames[i:i + args.batch_size] for i in range(0, len(frames), args.batch_size)]
