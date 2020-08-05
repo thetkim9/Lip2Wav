@@ -43,6 +43,7 @@ if (document.getElementById("webcam0")!=null) {
     }
 
     startButton.addEventListener("click", function() {
+        document.getElementById('submit').disabled = true;
         navigator.mediaDevices.getUserMedia({
             video: true,
             audio: true
@@ -67,5 +68,6 @@ if (document.getElementById("webcam0")!=null) {
                 log("Successfully recorded " + recordedBlob.size + " bytes of " +
                     recordedBlob.type + " media.");
               }).catch(log);
+              document.getElementById('submit').disabled = false;
     }, false);
 }
