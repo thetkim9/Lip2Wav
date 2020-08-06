@@ -77,8 +77,8 @@ app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 8
 def index():
     return render_template('index.html')
 
-@app.route('/lip2wav', methods=['GET', 'POST'])
-def lip2wav():
+@app.route('/lip2wav/<int:user_id>', methods=['GET', 'POST'])
+def lip2wav(user_id):
   if request.method != "POST":
     return
 
@@ -92,12 +92,12 @@ def lip2wav():
     return {'error': 'video not found'}, 400
 
   global progressRates
+  '''
   user_id = int(request.form.get('user_id'))
   print("hi1", user_id)
-
+  '''
   try:
     #save video
-
     path = os.path.join("input", str(user_id))
     os.mkdir(path)
     lip_video = request.files.get('lip_video')
