@@ -91,11 +91,11 @@ def lip2wav():
   if not request.files.get('lip_video'):
     return {'error': 'video not found'}, 400
 
-  try:
-    global progressRates
-    user_id = int(request.form.get('user_id'))
-    print("hi1", user_id)
+  global progressRates
+  user_id = int(request.form.get('user_id'))
+  print("hi1", user_id)
 
+  try:
     #save video
 
     path = os.path.join("input", str(user_id))
@@ -103,11 +103,6 @@ def lip2wav():
     lip_video = request.files.get('lip_video')
     with open("input/"+str(user_id)+"/"+str(user_id)+".mp4", 'wb') as f:
         f.write(lip_video.read())
-
-    '''
-    if(lip_video.format!='mp4'):
-      return {'error': 'video must be mp4'}, 401
-    '''
 
     #preprocessing
     print(user_id, "hi2")
@@ -158,7 +153,7 @@ def lip2wav():
     return response
 
   except Exception:
-    return {'error': 'error while loading input and/or output image files'}, 403
+    return {'error': 'error within request'}, 403
 
 @app.route('/setup/<int:user_id>')
 def setup(user_id):
