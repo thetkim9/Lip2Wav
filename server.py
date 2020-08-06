@@ -103,7 +103,10 @@ def lip2wav(user_id):
     lip_video = request.files.get('lip_video')
     with open("input/"+str(user_id)+"/"+str(user_id)+".mp4", 'wb') as f:
         f.write(lip_video.read())
+  except Exception as e:
+    return {'error': str(e)}, 401
 
+  try:
     #preprocessing
     print(user_id, "hi2")
     t1 = thread_with_trace(target=preprocess, args=[user_id])
@@ -118,7 +121,10 @@ def lip2wav(user_id):
         threads[0].kill()
     print(threads.pop(0))
     print(user_id, "first GPU task complete~~~~~~~~~~~~~~~~~")
+  except Exception as e:
+    return {'error': str(e)}, 402
 
+  try:
     print(user_id, "hi3")
     parser = argparse.ArgumentParser()
     parser.add_argument('--num_workers', help='Number of workers to run in parallel', default=8, type=int)
@@ -127,7 +133,10 @@ def lip2wav(user_id):
 
     prespe.dump(args)
     progressRates[user_id] = 40
+  except Exception as e:
+    return {'error': str(e)}, 403
 
+  try:
     print("hi4", user_id)
 
     t1 = thread_with_trace(target=run_model, args=[user_id])
@@ -144,7 +153,10 @@ def lip2wav(user_id):
     print(user_id, "second GPU task complete~~~~~~~~~~~~~~~~~")
 
     progressRates[user_id] = 90
+  except Exception as e:
+    return {'error': str(e)}, 404
 
+  try:
     print("hi5", user_id)
     result = send_file("output/"+str(user_id)+"/wavs/input_preprocessed_"+str(user_id)+".wav", mimetype='audio/wav')
     print("hi6", user_id)
@@ -153,7 +165,7 @@ def lip2wav(user_id):
     return response
 
   except Exception as e:
-    return {'error': str(e)}, str(e)
+    return {'error': str(e)}, 405
 
 @app.route('/setup/<int:user_id>')
 def setup(user_id):
