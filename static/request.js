@@ -89,7 +89,7 @@ document.getElementById("submit").onclick = () => {
     user_id = Math.floor(Math.random()*1000000000);
     var progress_bar = document.getElementById('progress_bar');
     formData.append('lip_video', source);
-    formData.append('user_id', user_id);
+    //formData.append('user_id', user_id);
     $.get('setup/' + user_id);
     check_progress(user_id, progress_bar);
     controller = new AbortController();
@@ -97,7 +97,7 @@ document.getElementById("submit").onclick = () => {
     //document.getElementById("cancel").style.visibility = "visible";
     document.getElementById("cancel").disabled = false;
     fetch(
-        '/lip2wav',
+        '/lip2wav/'+user_id,
         {
             method: 'POST',
             body: formData,
