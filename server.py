@@ -104,7 +104,7 @@ def lip2wav(user_id):
     with open("input/"+str(user_id)+"/"+str(user_id)+".mp4", 'wb') as f:
         f.write(lip_video.read())
   except Exception as e:
-    return {'error': str(e)}, 401
+    return {'error': str(e)}, 400
 
   try:
     #preprocessing
@@ -122,7 +122,7 @@ def lip2wav(user_id):
     print(threads.pop(0))
     print(user_id, "first GPU task complete~~~~~~~~~~~~~~~~~")
   except Exception as e:
-    return {'error': str(e)}, 402
+    return {'error': str(e)}, 400
 
   try:
     print(user_id, "hi3")
@@ -134,7 +134,7 @@ def lip2wav(user_id):
     prespe.dump(args)
     progressRates[user_id] = 40
   except Exception as e:
-    return {'error': str(e)}, 403
+    return {'error': str(e)}, 400
 
   try:
     print("hi4", user_id)
@@ -154,7 +154,7 @@ def lip2wav(user_id):
 
     progressRates[user_id] = 90
   except Exception as e:
-    return {'error': str(e)}, 404
+    return {'error': str(e)}, 400
 
   try:
     print("hi5", user_id)
@@ -165,7 +165,7 @@ def lip2wav(user_id):
     return response
 
   except Exception as e:
-    return {'error': str(e)}, 405
+    return {'error': str(e)}, 400
 
 @app.route('/setup/<int:user_id>')
 def setup(user_id):
