@@ -152,8 +152,8 @@ def lip2wav(user_id):
     print("hi7", user_id)
     return response
 
-  except Exception:
-    return {'error': 'error within request'}, 403
+  except Exception as e:
+    return {'error': str(e)}, str(e)
 
 @app.route('/setup/<int:user_id>')
 def setup(user_id):
