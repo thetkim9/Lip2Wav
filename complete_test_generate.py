@@ -85,7 +85,7 @@ def complete(folder):
 			return False
 	return True
 
-def run_model(args, g):
+def run_model(args):
 	videos = get_vidlist(args.data_root)
 	RESULTS_ROOT = args.results_root
 	if not os.path.isdir(RESULTS_ROOT):
@@ -121,6 +121,13 @@ def run_model(args, g):
 		g.vc(sample, outfile)
 
 		copy(vidpath + 'audio.wav', GTS_ROOT + vidname + '.wav')
+
+class mainModel:
+	def __init__(self):
+		sif.hparams.set_hparam('eval_ckpt', "../tacotron_model.ckpt-313000")
+		hp = sif.hparams
+		global g
+		g = Generator()
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()

@@ -11,9 +11,6 @@ import complete_test_generate as run
 progressRates = {}
 threads = []
 
-global model
-model = None
-
 
 class thread_with_trace(threading.Thread):
     def __init__(self, *args, **keywords):
@@ -56,7 +53,7 @@ def run_model(user_id):
                         default="input_preprocessed/")
     args = parser.parse_args()
 
-    pre.main(args, sub_model)
+    pre.main(args)
 
     progressRates[user_id] = 40
 
@@ -78,7 +75,7 @@ def run_model(user_id):
     parser.add_argument('-r', "--results_root", help="Speaker folder path", default="output/"+str(user_id))
     args = parser.parse_args()
 
-    run.run_model(args, main_model)
+    run.run_model(args)
     progressRates[user_id] = 90
 
 app = Flask(__name__, static_url_path="", template_folder="./")
@@ -198,13 +195,7 @@ if __name__ == '__main__':
     path = os.path.join(".", "output")
     os.mkdir(path)
 
-    global sub_model
-    sub_model = [pre.face_detection.FaceAlignment(pre.face_detection.LandmarksType._2D, flip_input=False,
-                                                  device='cuda:{}'.format(id)) for id in range(1)]
-
-    run.sif.hparams.set_hparam('eval_ckpt', "../tacotron_model.ckpt-313000")
-    hp = run.sif.hparams
-    global main_model
-    main_model = run.Generator()
+    pre.subModel()
+    run.mainModel()
 
     app.run(debug=False, port=80, host='0.0.0.0', threaded=True)
