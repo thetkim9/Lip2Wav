@@ -50,23 +50,41 @@ class thread_with_trace(threading.Thread):
     def kill(self):
         self.killed = True
 
-def preprocess(user_id):
+def run_model(user_id):
+    #run sub model
+    print(user_id, "hi2")
     parser = argparse.ArgumentParser()
     parser.add_argument('--ngpu', help='Number of GPUs across which to run in parallel', default=1, type=int)
     parser.add_argument('--batch_size', help='Single GPU Face detection batch size', default=32, type=int)
-    parser.add_argument("--data_root", help="Root folder of the LRW dataset", default="input/"+str(user_id))
-    parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset", default="input_preprocessed/")
+    parser.add_argument("--data_root", help="Root folder of the LRW dataset", default="input/" + str(user_id))
+    parser.add_argument("--preprocessed_root", help="Root folder of the preprocessed dataset",
+                        default="input_preprocessed/")
     args = parser.parse_args()
 
     pre.main(args, sub_model)
 
-def run_model(user_id):
+    progressRates[user_id] = 40
+
+    #run preprocess
+    print(user_id, "hi3")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--num_workers', help='Number of workers to run in parallel', default=8, type=int)
+    parser.add_argument("--preprocessed_root", help="Folder where preprocessed files will reside",
+                        default="input_preprocessed/" + str(user_id))
+    args = parser.parse_args()
+
+    prespe.dump(args)
+    progressRates[user_id] = 50
+
+    #run main model
+    print(user_id, "hi4")
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', "--data_root", help="Speaker folder path", default="input_preprocessed/"+str(user_id))
     parser.add_argument('-r', "--results_root", help="Speaker folder path", default="output/"+str(user_id))
     args = parser.parse_args()
 
     run.run_model(args, main_model)
+    progressRates[user_id] = 90
 
 app = Flask(__name__, static_url_path="", template_folder="./")
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 8
@@ -94,9 +112,9 @@ def lip2wav(user_id):
   global progressRates
   '''
   user_id = int(request.form.get('user_id'))
-  print("hi1", user_id)
   '''
   try:
+    print("hi1", user_id)
     #save video
     path = os.path.join("input", str(user_id))
     os.mkdir(path)
@@ -107,38 +125,6 @@ def lip2wav(user_id):
     return {'error': str(e)}, 400
 
   try:
-    #preprocessing
-    print(user_id, "hi2")
-    t1 = thread_with_trace(target=preprocess, args=[user_id])
-    t1.user_id = user_id
-    threads.append(t1)
-    while threads[0].user_id != user_id:
-        if threads[0].is_alive():
-            threads[0].join()
-    threads[0].start()
-    threads[0].join(timeout=15)
-    if threads[0].is_alive():
-        threads[0].kill()
-    print(threads.pop(0))
-    print(user_id, "first GPU task complete~~~~~~~~~~~~~~~~~")
-  except Exception as e:
-    return {'error': str(e)}, 400
-
-  try:
-    print(user_id, "hi3")
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--num_workers', help='Number of workers to run in parallel', default=8, type=int)
-    parser.add_argument("--preprocessed_root", help="Folder where preprocessed files will reside", default="input_preprocessed/"+str(user_id))
-    args = parser.parse_args()
-
-    prespe.dump(args)
-    progressRates[user_id] = 40
-  except Exception as e:
-    return {'error': str(e)}, 400
-
-  try:
-    print("hi4", user_id)
-
     t1 = thread_with_trace(target=run_model, args=[user_id])
     t1.user_id = user_id
     threads.append(t1)
@@ -150,9 +136,8 @@ def lip2wav(user_id):
     if threads[0].is_alive():
         threads[0].kill()
     print(threads.pop(0))
-    print(user_id, "second GPU task complete~~~~~~~~~~~~~~~~~")
+    print(user_id, "GPU task complete~~~~~~~~~~~~~~~~~")
 
-    progressRates[user_id] = 90
   except Exception as e:
     return {'error': str(e)}, 400
 
