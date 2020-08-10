@@ -41,6 +41,7 @@ class Generator(object):
 
 		print("hi2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		try:
+			print(len(all_windows))
 			for window_idx, window_fnames in enumerate(all_windows):
 				images = self.read_window(window_fnames)
 				print("before ml run")
