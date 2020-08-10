@@ -40,20 +40,22 @@ class Generator(object):
 		ref = np.expand_dims(ref, 0)
 
 		print("hi2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-		for window_idx, window_fnames in enumerate(all_windows):
-			images = self.read_window(window_fnames)
+		try:
+			for window_idx, window_fnames in enumerate(all_windows):
+				images = self.read_window(window_fnames)
 
-			s = self.synthesizer.synthesize_spectrograms(images, ref)[0]
-			if window_idx == 0:
-				mel = s
-			elif window_idx == len(all_windows) - 1:
-				remaining = ((sample['till'] - id_windows[-1][-1] + 1) // 5) * 16
-				if remaining == 0:
-					continue
-				mel = np.concatenate((mel, s[:, -remaining:]), axis=1)
-			else:
-				mel = np.concatenate((mel, s[:, hp.mel_overlap:]), axis=1)
-
+				s = self.synthesizer.synthesize_spectrograms(images, ref)[0]
+				if window_idx == 0:
+					mel = s
+				elif window_idx == len(all_windows) - 1:
+					remaining = ((sample['till'] - id_windows[-1][-1] + 1) // 5) * 16
+					if remaining == 0:
+						continue
+					mel = np.concatenate((mel, s[:, -remaining:]), axis=1)
+				else:
+					mel = np.concatenate((mel, s[:, hp.mel_overlap:]), axis=1)
+		except Exception as e:
+			print(str(e))
 		print("hi3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 		wav = self.synthesizer.griffin_lim(mel)
 		sif.audio.save_wav(wav, outfile, sr=hp.sample_rate)
