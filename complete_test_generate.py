@@ -43,8 +43,9 @@ class Generator(object):
 		try:
 			for window_idx, window_fnames in enumerate(all_windows):
 				images = self.read_window(window_fnames)
-
+				print("before ml run")
 				s = self.synthesizer.synthesize_spectrograms(images, ref)[0]
+				print('after ml run')
 				if window_idx == 0:
 					mel = s
 				elif window_idx == len(all_windows) - 1:
