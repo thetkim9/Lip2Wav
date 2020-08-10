@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e989248d-6d8c-4568-9036-a53819bbaaeb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/complete_test_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/complete_test_generate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +37,11 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2509" y="189" width="766" height="647" key="find.popup" timestamp="1596610314425">
-      <screen x="1440" y="23" width="1920" height="1057" />
+    <state x="802" y="148" width="575" height="490" key="find.popup" timestamp="1597073583285">
+      <screen x="0" y="23" width="1440" height="798" />
     </state>
     <state x="1488" y="180" width="586" height="490" key="find.popup/0.23.1440.798/1440.23.1920.1057@1440.23.1920.1057" timestamp="1596012032746" />
+    <state x="802" y="148" width="575" height="490" key="find.popup/0.23.1440.798@0.23.1440.798" timestamp="1597073583285" />
     <state x="2509" y="189" width="766" height="647" key="find.popup/0.23.1440.801/1440.23.1920.1057@1440.23.1920.1057" timestamp="1596610314425" />
     <state x="36" y="142" width="574" height="490" key="find.popup/0.23.1440.801@0.23.1440.801" timestamp="1596430291508" />
   </component>

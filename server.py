@@ -1,13 +1,8 @@
 from flask import Flask, render_template, request, send_file, make_response
-#from flask_limiter import Limiter
-from PIL import Image, ImageOps
-import time
 import shutil
 import os
 import sys
 import threading
-#from moviepy.editor import *
-import cv2
 import argparse
 import preprocess as pre
 import preprocess_speakers as prespe
@@ -87,9 +82,6 @@ def run_model(user_id):
     progressRates[user_id] = 90
 
 app = Flask(__name__, static_url_path="", template_folder="./")
-app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 8
-
-#limiter = Limiter(app, default_limits=['1 per second'])
 
 @app.route("/")
 def index():
