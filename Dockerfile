@@ -32,4 +32,4 @@ RUN python3.7 -m pip install "Pillow<7"
 RUN python3.7 -m pip install requests
 COPY . .
 EXPOSE 80
-#CMD python3 server.py
+CMD python3.7 server.py
