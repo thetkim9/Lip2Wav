@@ -121,7 +121,7 @@ def lip2wav(user_id):
         if threads[0].is_alive():
             threads[0].join()
     threads[0].start()
-    threads[0].join(timeout=15)
+    threads[0].join(timeout=40)
     if threads[0].is_alive():
         threads[0].kill()
     print(threads.pop(0))
