@@ -31,6 +31,9 @@ RUN python3.7 -m pip install flask
 RUN python3.7 -m pip install "Pillow<7"
 RUN python3.7 -m pip install requests
 RUN python3.7 -m pip install waitress
+RUN wget https://www.adrianbulat.com/downloads/python-fan/s3fd-619a316812.pth
+RUN mv s3fd-619a316812.pth s3fd.pth
 COPY . .
+RUN mv s3fd.pth face_detection/detection/sfd
 EXPOSE 80
 CMD python3.7 server.py
