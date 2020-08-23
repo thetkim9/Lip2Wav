@@ -30,6 +30,7 @@ RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=down
 RUN python3.7 -m pip install flask
 RUN python3.7 -m pip install "Pillow<7"
 RUN python3.7 -m pip install requests
+RUN python3.7 -m pip install waitress
 COPY . .
 EXPOSE 80
 CMD python3.7 server.py
