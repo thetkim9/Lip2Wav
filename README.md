@@ -1,7 +1,6 @@
 # Lip2Wav
 
 ## Run demo
-
 Try running the service straight away!!
 
 Click the button below to go to the hosting site. Then, click the blue link, which is the endpoint.
@@ -9,7 +8,7 @@ Click the button below to go to the hosting site. Then, click the blue link, whi
 [![Run on Ainize](https://ainize.ai/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=https://github.com/thetkim9/Lip2Wav)
 
 
-##General
+## General
 *Generate high quality speech from only lip movements*. This code is part of the paper: _Learning Individual Speaking Styles for Accurate Lip to Speech Synthesis_ published at CVPR'20.
 
 [[Paper]](https://openaccess.thecvf.com/content_CVPR_2020/papers/Prajwal_Learning_Individual_Speaking_Styles_for_Accurate_Lip_to_Speech_Synthesis_CVPR_2020_paper.pdf) | [[Project Page]](http://cvit.iiit.ac.in/research/projects/cvit-projects/speaking-by-observing-lip-movements) | [[Demo Video]](https://www.youtube.com/watch?v=HziA-jmlk_4)
