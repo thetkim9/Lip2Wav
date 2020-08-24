@@ -37,12 +37,23 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="802" y="148" width="575" height="490" key="find.popup" timestamp="1597074949396">
+    <state x="802" y="148" width="575" height="490" key="find.popup" timestamp="1598204075316">
       <screen x="0" y="23" width="1440" height="798" />
     </state>
     <state x="1488" y="180" width="586" height="490" key="find.popup/0.23.1440.798/1440.23.1920.1057@1440.23.1920.1057" timestamp="1596012032746" />
-    <state x="802" y="148" width="575" height="490" key="find.popup/0.23.1440.798@0.23.1440.798" timestamp="1597074949396" />
+    <state x="802" y="148" width="575" height="490" key="find.popup/0.23.1440.798@0.23.1440.798" timestamp="1598204075316" />
     <state x="2509" y="189" width="766" height="647" key="find.popup/0.23.1440.801/1440.23.1920.1057@1440.23.1920.1057" timestamp="1596610314425" />
     <state x="36" y="142" width="574" height="490" key="find.popup/0.23.1440.801@0.23.1440.801" timestamp="1596430291508" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/synthesizer/tacotron2.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
