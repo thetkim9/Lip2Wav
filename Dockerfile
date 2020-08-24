@@ -10,14 +10,14 @@ RUN apt-get -y install build-essential
 RUN apt-get -y install ffmpeg
 RUN apt-get -y install wget
 RUN apt -y install python3-pip
-RUN python3.7 -m pip install --upgrade setuptools
+#RUN python3.7 -m pip install --upgrade setuptools
 RUN python3.7 -m pip install pip
 RUN python3.7 -m pip install numpy==1.16.4
 RUN python3.7 -m pip install Cython
 RUN python3.7 -m pip install pkgconfig
 RUN apt-get -y install curl
 COPY requirements.txt .
-RUN python3.7 -m pip install -r requirements.txt || true
+RUN python3.7 -m pip install -r requirements.txt
 RUN apt update && apt install -y libsm6 libxext6
 RUN apt-get install -y libxrender-dev
 RUN python3.7 -m pip install torch==1.5.0 torchvision==0.6.0 -f https://download.pytorch.org/whl/torch_stable.html
