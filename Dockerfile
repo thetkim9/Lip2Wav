@@ -34,7 +34,7 @@ RUN python3.7 -m pip install requests
 RUN python3.7 -m pip install waitress
 RUN wget https://www.adrianbulat.com/downloads/python-fan/s3fd-619a316812.pth
 RUN mv s3fd-619a316812.pth s3fd.pth
-RUN --from=builder . .
+COPY --from=builder . .
 COPY . .
 RUN mv s3fd.pth face_detection/detection/sfd
 EXPOSE 80
