@@ -10,7 +10,9 @@ RUN apt-get -y install build-essential
 RUN apt-get -y install ffmpeg
 RUN apt-get -y install wget
 RUN apt -y install python3-pip
-#RUN python3.7 -m pip install --upgrade setuptools
+RUN pip install --upgrade pip
+RUN apt-get update
+RUN python3.7 -m pip install setuptools
 RUN python3.7 -m pip install pip
 RUN python3.7 -m pip install numpy==1.16.4
 RUN python3.7 -m pip install Cython
